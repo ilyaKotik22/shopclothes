@@ -1,11 +1,29 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import './AccountPageBody.css'
 import {MyButton} from "../../shared/ui";
 import {AuthPopup} from "./AuthPopup/AuthPopup.tsx";
+import {useDispatch, useSelector} from "react-redux";
+import type {RootState} from "../../app/store/store.ts";
+import {ChangeStatus} from "./AuthPopup/store/authPopup.ts";
+
+
 
 export const AccountPageBody: React.FC = () => {
+    const AuthPopupSelector = useSelector((state:RootState)=> state.AuthPopupSlice.AuthPopup)
+    const dispatch = useDispatch()
+    useEffect(() => {
+        const login = localStorage.getItem('login')
+        console.log(login)
+        if (login) dispatch(ChangeStatus())
+    }, []);
+
+
     const [navigation,setNAvigation] = useState('Личные данные')
     const masNavigation = ['История заказов','Личные данные','Выйти']
+
+    useEffect(() => {
+        if (navigation === 'Выйти') localStorage.removeItem('login')
+    }, [navigation]);
     return (
         <div className={'container'}>
             <div className={'AccountPage'}>
@@ -18,13 +36,13 @@ export const AccountPageBody: React.FC = () => {
                         )
                     })}
                 </div>
-                {/*{<AuthPopup/>}*/}
+                {AuthPopupSelector ?<></> : <AuthPopup/> }
                 {navigation === 'Личные данные' ?
                     <form className={'AccountPage__accountData'}>
                         <div className="AccountPage__head">Персональные данные:</div>
                         <div className="AccountPage__section">
                             <div className="">
-                                <input type="text"/>
+                                <input  type="text"/>
                             </div>
                             <div>
                                 <input type="text"/>
@@ -46,9 +64,10 @@ export const AccountPageBody: React.FC = () => {
                                 <input type="text"/>
                             </div>
                         </div>
-                        <MyButton classMod={'AccountButton'} text={'ОБНОВИТЬ ИНФОРМАЦИЮ'}/>
+                        <MyButton typeButton={'button'} classMod={'AccountButton'} text={'ОБНОВИТЬ ИНФОРМАЦИЮ'}/>
                     </form>
                     : <div></div>}
+
             </div>
         </div>
 

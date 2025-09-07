@@ -5,12 +5,12 @@ type Button = {
     onClick?: ()=>void
     img?: string
     classMod?: string
-
+    typeButton: 'submit' | 'button'
 }
 
-export const MyButton: React.FC<Button> = ({ onClick,text,img,classMod }) => {
+export const MyButton: React.FC<Button> = ({ typeButton,onClick,text,img,classMod }) => {
     return (
-        <button className={classMod} onClick={onClick}>
+        <button type={typeButton} className={classMod} onClick={onClick}>
             {img}
             {text}
         </button>);
