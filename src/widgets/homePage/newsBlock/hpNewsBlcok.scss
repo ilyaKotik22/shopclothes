@@ -1,0 +1,29 @@
+.hpNewsBlock{
+  margin: 0 auto;
+  width: 42vw;
+  min-width: 335px;
+  flex-wrap: wrap;
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  margin-bottom: 7vw;
+
+  .hpNewsBlock__polit{
+    font-size: 16px;
+    color: #252525;
+  }
+  .hpNewsBlock__header{
+    width: 100%;
+    margin-bottom: 40px;
+    font-size: clamp(24px, 4vw, 36px)
+  }
+  .hpNewsBlock__button{
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  input{
+    height: 45px;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+}

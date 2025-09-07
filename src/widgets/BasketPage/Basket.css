@@ -1,0 +1,81 @@
+.Basket {
+  padding-top: 120px;
+  position: relative;
+}
+.Basket .Basket__itemsArea {
+  padding-bottom: 180px;
+}
+.Basket .Basket__itemsArea .Basket__item {
+  position: relative;
+  flex-wrap: wrap;
+  height: 150px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.Basket .Basket__itemsArea .Basket__item .Basket__right-section {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+.Basket .Basket__itemsArea .Basket__item .Basket__right-section .Basket__img {
+  width: 100px;
+  height: 110px;
+  background-color: #333333;
+}
+.Basket .Basket__itemsArea .Basket__item .Basket__colors .Basket__show-Color {
+  width: 30px;
+  height: 30px;
+  background-color: #333333;
+  border-radius: 50%;
+}
+.Basket .Basket__itemsArea .Basket__item .Basket__size {
+  z-index: 300;
+}
+.Basket .Basket__itemsArea .Basket__item .Basket__size .Basket__dropdown {
+  background-color: #ededed;
+  position: absolute;
+  border: 2px solid #333333;
+}
+.Basket .Basket__itemsArea .Basket__item .Basket__size .Basket__dropdown li {
+  padding: 0 31px;
+  transition: 300ms;
+}
+.Basket .Basket__itemsArea .Basket__item .Basket__size .Basket__dropdown li:hover {
+  color: var(--button-color-active);
+}
+.Basket .Basket__itemsArea .Basket__item .Basket__size .Basket__show-size {
+  display: flex;
+  padding: 15px 20px;
+  border: 2px solid #252525;
+}
+.Basket .Basket__itemsArea .Basket__item .Basket__size .Basket__show-size img {
+  margin-left: 10px;
+  transform: rotate(90deg);
+}
+.Basket .Basket__itemsArea .Basket__item .Basket__count {
+  gap: 10px;
+  height: max-content;
+  display: flex;
+  border: 2px solid #252525;
+}
+.Basket .Basket__itemsArea .Basket__item .Basket__count div {
+  font-size: 20px;
+  padding: 11px 20px;
+}
+.Basket .Basket__itemsArea .Basket__item .Basket__count .value {
+  padding: 11px 0;
+}
+.Basket .Basket__itemsArea .Basket__item .Basket__right-section {
+  display: flex;
+  gap: 20px;
+}
+.Basket .Basket__itemsArea .Basket__item .Basket__right-section .Basket__price {
+  font-weight: bold;
+}
+.clicked {
+  transform: rotate(270deg) !important;
+}
+
+/*# sourceMappingURL=Basket.css.map */

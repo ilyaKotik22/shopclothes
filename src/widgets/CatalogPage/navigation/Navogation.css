@@ -1,0 +1,11 @@
+.navigation li {
+  font-size: 16px;
+  padding-bottom: 20px;
+  cursor: pointer;
+  transition: 300ms;
+}
+.navigation li:hover {
+  color: var(--button-color-active);
+}
+
+/*# sourceMappingURL=Navogation.css.map */

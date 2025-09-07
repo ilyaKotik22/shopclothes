@@ -1,0 +1,34 @@
+.returnBlock {
+  padding-top: 120px;
+  padding-bottom: 120px;
+}
+.returnBlock .returnBlock__upBlock {
+  margin-bottom: 20px;
+}
+.returnBlock .returnBlock__upBlock .returnBlock__header {
+  font-size: 20px;
+}
+.returnBlock .returnBlock__upBlock .returnBlock__content {
+  font-size: 16px;
+}
+.returnBlock ul {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+.returnBlock ul li {
+  display: flex;
+  justify-content: center;
+  max-width: 165px;
+  flex-wrap: wrap;
+  font-size: 16px;
+  height: max-content;
+  text-align: center;
+}
+.returnBlock ul li img {
+  width: 30px;
+  height: 30px;
+  margin-bottom: 10px;
+}
+
+/*# sourceMappingURL=ReturnBody.css.map */
