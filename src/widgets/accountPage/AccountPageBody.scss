@@ -1,0 +1,52 @@
+.AccountPage{
+  padding-top: 120px;
+
+  .AccountPage__navigation{
+    display: flex;
+    width: 100%;
+    border-top: 1px solid #252525;
+    border-bottom: 1px solid #252525;
+    justify-content: center;
+
+    .checkedNav{
+      color: white;
+      background-color: #E0BEA2;
+    }
+    div{
+      padding: 20px 40px;
+
+    }
+
+  }
+  .AccountPage__accountData{
+    margin-bottom: 120px;
+
+    .AccountPage__head{
+      font-size: 16px;
+      margin-bottom: 20px;
+      margin-top: 20px;
+    }
+    .AccountPage__section{
+      width: 100%;
+      flex-wrap: wrap;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+
+      div{
+        min-width: 270px;
+        flex-grow: 1;
+        input{
+          height: 50px;
+          width: 100%;
+        }
+      }
+
+    }
+  }
+}
+.AccountButton{
+  height: 50px;
+  margin-top: 20px;
+  width: 100%;
+}

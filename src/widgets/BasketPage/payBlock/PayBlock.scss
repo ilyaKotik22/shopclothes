@@ -1,0 +1,121 @@
+.PayBlock{
+  padding-bottom: 120px;
+  display: grid;
+  grid-template-columns: 70% 30%;
+  .payBlockSec{
+    height: max-content;
+    .pay__nav{
+      margin-bottom: 40px;
+      div{
+        margin-bottom:20px;
+        padding: 0;
+        width: 100%;
+
+        a{
+          color: #252525;
+          border-bottom: 1px solid #252525;
+        }
+      }
+    }
+
+    .PayBlock__payBar{
+      margin-bottom: 15px;
+      div{
+        margin-bottom: 0;
+      }
+      display: flex;
+      justify-content: space-between;
+      .PayBlock__left{
+          width: max-content;
+      }
+      .PayBlock__right{
+        text-align: right;
+        font-weight: bold;
+      }
+    }
+  }
+  .PayBlock__section{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+
+    .PayBlock__buttonSection{
+      width: 100%;
+      font-size: 16px;
+      display: flex;
+      flex-wrap: wrap;
+      div{
+
+      }
+
+    }
+    .PayBlock__element{
+      width: 48%;
+      .voidArea{
+        width: 100%;
+        height: 16px;
+      }
+      .PayBlock__location{
+        .dd{
+          margin-bottom: 5px;
+        }
+        div{
+          position: relative;
+          label{
+            input{
+              display: none;
+            }
+            input:checked + .dote{
+              background-color: var(--button-color-active);
+            }
+            span{
+
+              display: flex;
+            }
+            span::before{
+              content: ' ';
+              width: 20px;
+              height: 20px;
+              margin-right: 5px;
+              border-radius: 50%;
+              border: 1px solid #333333;
+            }
+            .dote{
+              width: 10px;
+              height: 10px;
+              border-radius: 50%;
+              background-color: revert;
+              position: absolute;
+              left: 5px;
+              margin-top: 5px;
+            }
+            .dote::before{
+              border: revert;
+            }
+          }
+        }
+      }
+      .input1{
+        margin-top: 7px;
+      }
+      input{
+        margin-bottom: 20px;
+        width: 100%;
+        height: 50px;
+
+      }
+    }
+  }
+
+}
+.underHeadPay{
+  margin-bottom: 20px;
+}
+.payButton{
+  margin-top: 10px;
+  width: 100%;
+  padding: 15px 20px;
+}
+.p{
+  margin-top: 16px;
+}

@@ -1,0 +1,28 @@
+.ItemBody {
+  width: 20vw;
+  font-size: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.ItemBody ul {
+  display: flex;
+  gap: 5px;
+  width: 100%;
+  justify-content: center;
+}
+.ItemBody div {
+  width: 100%;
+  text-align: center;
+}
+.ItemBody .ItemBody__price {
+  font-weight: bold;
+}
+.ItemBody .ItemBody__colors li {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: black;
+}
+
+/*# sourceMappingURL=ItemBody.css.map */

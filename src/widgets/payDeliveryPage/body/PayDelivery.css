@@ -1,0 +1,38 @@
+.PayDelivery {
+  padding-top: 80px;
+  margin-bottom: 120px;
+}
+.PayDelivery .PayDelivery__header {
+  font-size: 20px;
+  margin-bottom: 20px;
+  margin-top: 40px;
+}
+.PayDelivery .PayDelivery__content {
+  font-size: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.PayDelivery .PayDelivery__content .PayDelivery__block {
+  max-width: 550px;
+}
+.PayDelivery .PayDelivery__content .PayDelivery__block li {
+  margin-bottom: 5px;
+}
+.PayDelivery .PayDelivery__content .PayDelivery__block li:first-child {
+  margin-bottom: 10px;
+}
+.PayDelivery .PayDelivery__content .PayDelivery__block p {
+  width: 80%;
+}
+.PayDelivery .PayDelivery__content .mod__Block {
+  display: flex;
+  align-items: center;
+}
+.PayDelivery .PayDelivery__content .mod__Block img {
+  width: 45px;
+  height: 50px;
+  margin-right: 15px;
+}
+
+/*# sourceMappingURL=PayDelivery.css.map */

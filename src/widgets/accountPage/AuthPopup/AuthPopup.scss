@@ -1,0 +1,61 @@
+.AuthPopup{
+  z-index: 1000;
+  display: flex;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background-color: rgba(0,0,0,0.5);
+  justify-content: center;
+  align-items: center;
+
+  .AuthPopup__content{
+    padding: 20px 6vw;
+    width: 40vw;
+
+    background-color: #fff;
+    display: flex;
+    flex-wrap: wrap;
+
+    .AuthPopup__underSection{
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      margin-bottom: 20px;
+
+      div{
+        a{
+          color: #252525;
+          border-bottom: 1px solid #252525;
+        }
+      }
+    }
+    .AuthPopup__header{
+      width: 100%;
+      text-align: center;
+      font-size: 20px;
+      margin-bottom: 30px;
+    }
+    input{
+      width: 100%;
+      height: 50px;
+      margin-bottom: 20px;
+    }
+    .AuthPopup__cross{
+      width: 100%;
+      cursor: pointer;
+
+      img{
+        margin-left: 110%;
+
+
+      }
+    }
+  }
+}
+.AuthPopup__button{
+  flex-grow: 1;
+  height: 50px;
+  margin-bottom: 20px;
+}

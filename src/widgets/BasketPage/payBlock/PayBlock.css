@@ -1,0 +1,112 @@
+.PayBlock {
+  padding-bottom: 120px;
+  display: grid;
+  grid-template-columns: 70% 30%;
+}
+.PayBlock .payBlockSec {
+  height: max-content;
+}
+.PayBlock .payBlockSec .pay__nav {
+  margin-bottom: 40px;
+}
+.PayBlock .payBlockSec .pay__nav div {
+  margin-bottom: 20px;
+  padding: 0;
+  width: 100%;
+}
+.PayBlock .payBlockSec .pay__nav div a {
+  color: #252525;
+  border-bottom: 1px solid #252525;
+}
+.PayBlock .payBlockSec .PayBlock__payBar {
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: space-between;
+}
+.PayBlock .payBlockSec .PayBlock__payBar div {
+  margin-bottom: 0;
+}
+.PayBlock .payBlockSec .PayBlock__payBar .PayBlock__left {
+  width: max-content;
+}
+.PayBlock .payBlockSec .PayBlock__payBar .PayBlock__right {
+  text-align: right;
+  font-weight: bold;
+}
+.PayBlock .PayBlock__section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.PayBlock .PayBlock__section .PayBlock__buttonSection {
+  width: 100%;
+  font-size: 16px;
+  display: flex;
+  flex-wrap: wrap;
+}
+.PayBlock .PayBlock__section .PayBlock__element {
+  width: 48%;
+}
+.PayBlock .PayBlock__section .PayBlock__element .voidArea {
+  width: 100%;
+  height: 16px;
+}
+.PayBlock .PayBlock__section .PayBlock__element .PayBlock__location .dd {
+  margin-bottom: 5px;
+}
+.PayBlock .PayBlock__section .PayBlock__element .PayBlock__location div {
+  position: relative;
+}
+.PayBlock .PayBlock__section .PayBlock__element .PayBlock__location div label input {
+  display: none;
+}
+.PayBlock .PayBlock__section .PayBlock__element .PayBlock__location div label input:checked + .dote {
+  background-color: var(--button-color-active);
+}
+.PayBlock .PayBlock__section .PayBlock__element .PayBlock__location div label span {
+  display: flex;
+}
+.PayBlock .PayBlock__section .PayBlock__element .PayBlock__location div label span::before {
+  content: " ";
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+  border-radius: 50%;
+  border: 1px solid #333333;
+}
+.PayBlock .PayBlock__section .PayBlock__element .PayBlock__location div label .dote {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: revert;
+  position: absolute;
+  left: 5px;
+  margin-top: 5px;
+}
+.PayBlock .PayBlock__section .PayBlock__element .PayBlock__location div label .dote::before {
+  border: revert;
+}
+.PayBlock .PayBlock__section .PayBlock__element .input1 {
+  margin-top: 7px;
+}
+.PayBlock .PayBlock__section .PayBlock__element input {
+  margin-bottom: 20px;
+  width: 100%;
+  height: 50px;
+}
+
+.underHeadPay {
+  margin-bottom: 20px;
+}
+
+.payButton {
+  margin-top: 10px;
+  width: 100%;
+  padding: 15px 20px;
+}
+
+.p {
+  margin-top: 16px;
+}
+
+/*# sourceMappingURL=PayBlock.css.map */

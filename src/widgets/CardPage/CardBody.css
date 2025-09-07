@@ -1,0 +1,105 @@
+.CardBody {
+  padding-bottom: 120px;
+  padding-top: 120px;
+  display: flex;
+  width: 100%;
+  gap: 20px;
+}
+.CardBody .CardBody__section {
+  display: flex;
+  width: 50%;
+}
+.CardBody .CardBody__section .CardBody__slice img {
+  margin-bottom: 10px;
+  margin-right: 10px;
+}
+.CardBody .CardBody__section .CardBody__header {
+  font-size: 20px;
+}
+.CardBody .CardBody__section .CardBody__price {
+  font-size: 20px;
+  font-weight: bold;
+}
+.CardBody .CardBody__section .CardBody__colors {
+  display: flex;
+  gap: 10px;
+}
+.CardBody .CardBody__section .CardBody__colors li {
+  width: 24px;
+  height: 24px;
+  background-color: black;
+  border-radius: 50%;
+}
+.CardBody .CardBody__section .CardBody__color-name {
+  color: var(--button-color-active);
+}
+.CardBody .CardBody__section .CardBody__dropdown {
+  border: 2px solid #252525;
+}
+.CardBody .CardBody__section .CardBody__dropdown li {
+  cursor: pointer;
+  padding: 10px 15px;
+}
+.CardBody .CardBody__section .CardBody__size {
+  width: 100%;
+  height: 50px;
+  border: 2px solid black;
+  cursor: pointer;
+}
+.CardBody .CardBody__section .CardBody__size label span {
+  position: absolute;
+  margin-left: 10px;
+  margin-top: 10px;
+}
+.CardBody .CardBody__section .CardBody__size label input {
+  display: none;
+}
+.CardBody .CardBody__section .CardBody__description .CardBody__description-size {
+  font-size: 20px;
+}
+.CardBody .CardBody__section .CardBody__description .CardBody__description-size .CardBody__header-size {
+  cursor: pointer;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  transition: 300ms;
+}
+.CardBody .CardBody__section .CardBody__description .CardBody__description-size .CardBody__header-size:hover {
+  color: var(--button-color-active);
+}
+.CardBody .CardBody__section .CardBody__description .CardBody__description-size .CardBody__dropdown-desc div {
+  font-size: 16px;
+  padding-bottom: 1px;
+}
+.CardBody .mod__section {
+  height: max-content;
+  flex-wrap: wrap;
+}
+.CardBody .mod__section div {
+  width: 100%;
+  padding-bottom: 20px;
+}
+.CardBody .modeButton {
+  margin-top: 20px;
+  justify-content: space-between;
+  gap: 20px;
+}
+.CardBody .modeButton button {
+  flex-grow: 1;
+}
+
+.justLine {
+  position: relative;
+  z-index: 100;
+  width: 100%;
+  padding-bottom: revert !important;
+  height: 1px !important;
+  background-color: #252525;
+  margin-bottom: 20px;
+}
+
+.changedSize {
+  color: var(--button-color-active);
+}
+
+/*# sourceMappingURL=CardBody.css.map */
