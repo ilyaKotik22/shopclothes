@@ -1,10 +1,10 @@
-
+import AuthPopupSlice from '../../widgets/accountPage/AuthPopup/store/authPopup.ts'
 import {configureStore} from "@reduxjs/toolkit";
 
 export const store = configureStore(
     {
         reducer: {
-
+            AuthPopupSlice
         }
     }
 )
