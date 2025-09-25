@@ -9,9 +9,9 @@ type Item ={
     sizeArr: string[]
     colorsArr: string[]
 }
-export const ItemBody: React.FC<Item> = ({name,price,sizeArr,colorsArr}) => {
+export const ItemBody: React.FC<Item> = ({id,name,price,sizeArr,colorsArr}) => {
     return (
-        <a href={'/Card/:id'}>
+        <a href={`/Card/:${id}`}>
             <div className={'ItemBody'}>
                 <img src={img1} alt=""/>
                 <div className="ItemBody__name">{name}</div>
