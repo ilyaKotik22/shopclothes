@@ -6,6 +6,9 @@
     cursor: pointer;
     transition: 300ms;
   }
+  .navPick{
+    color: var(--button-color-active);
+  }
   li:hover{
 
     color: var(--button-color-active);

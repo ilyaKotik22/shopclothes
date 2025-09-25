@@ -14,16 +14,14 @@ export const ItemBody: React.FC<Item> = ({name,price,sizeArr,colorsArr}) => {
         <a href={'/Card/:id'}>
             <div className={'ItemBody'}>
                 <img src={img1} alt=""/>
-                <div className="ItemBody__name">Белая куртка</div>
-                <div className="ItemBody__price">2300p</div>
+                <div className="ItemBody__name">{name}</div>
+                <div className="ItemBody__price">{price}p</div>
                 <ul className={'ItemBody__sizes'}>
-                    <li>s</li>
-                    <li>m</li>
-                    <li>l</li>
+                    {sizeArr.map(el=> <li>{el}</li>)}
                 </ul>
                 <ul className={'ItemBody__colors'}>
-                    <li></li>
-                    <li></li>
+                    {colorsArr.map(el=> <li></li>)}
+                   
                 </ul>
             </div>
         </a>

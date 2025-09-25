@@ -5,24 +5,29 @@ import {AuthPopup} from "./AuthPopup/AuthPopup.tsx";
 import {useDispatch, useSelector} from "react-redux";
 import type {RootState} from "../../app/store/store.ts";
 import {ChangeStatus} from "./AuthPopup/store/authPopup.ts";
+import {updateUser} from "./store/appSlice.ts";
 
 
 
 export const AccountPageBody: React.FC = () => {
     const AuthPopupSelector = useSelector((state:RootState)=> state.AuthPopupSlice.AuthPopup)
+    const loginSelector = useSelector((state:RootState)=> state.appSlice.user)
+    const login = localStorage.getItem('login')
     const dispatch = useDispatch()
     useEffect(() => {
-        const login = localStorage.getItem('login')
         console.log(login)
         if (login) dispatch(ChangeStatus())
-    }, []);
+    }, [login]);
 
 
     const [navigation,setNAvigation] = useState('Личные данные')
     const masNavigation = ['История заказов','Личные данные','Выйти']
 
     useEffect(() => {
-        if (navigation === 'Выйти') localStorage.removeItem('login')
+        if (navigation === 'Выйти') {
+            localStorage.removeItem('login')
+            dispatch(updateUser({login:'',password:''}))
+        }
     }, [navigation]);
     return (
         <div className={'container'}>
@@ -42,10 +47,10 @@ export const AccountPageBody: React.FC = () => {
                         <div className="AccountPage__head">Персональные данные:</div>
                         <div className="AccountPage__section">
                             <div className="">
-                                <input  type="text"/>
+                                <input  value={loginSelector.login}  type="text"/>
                             </div>
                             <div>
-                                <input type="text"/>
+                                <input value={loginSelector.password} type="text"/>
                             </div>
                             <div className="">
                                 <input type="text"/>

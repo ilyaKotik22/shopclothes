@@ -5,9 +5,10 @@ import {MyButton} from "../../../shared/ui";
 import cross from  '../../../../public/crossIcon.png'
 import {createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut} from "firebase/auth";
 import {auth} from "../../../../server/server.ts";
-import {useDispatch, useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
 import {ChangeStatus} from "./store/authPopup.ts";
-import type {RootState} from "../../../app/store/store.ts";
+
+import {updateUser} from "../store/appSlice.ts";
 
 export const AuthPopup: React.FC = () => {
 
@@ -16,7 +17,6 @@ export const AuthPopup: React.FC = () => {
     const [error,setError] = useState('')
     const [isAutharisation, setIsAutharisation] = useState(false)
     const dispatch = useDispatch()
-    const authPopupSelector = useSelector((state:RootState)=> state.AuthPopupSlice.AuthPopup)
 
     const signUpWithEmail = async (email,password) =>{
         const correctEmail = email.replace(/\s/g, '')
@@ -36,6 +36,7 @@ export const AuthPopup: React.FC = () => {
             const userCredential = await signInWithEmailAndPassword(auth,correctEmail,password)
             localStorage.setItem('login',userCredential.user.email?.slice(0, userCredential.user.email?.indexOf('@')) as string)
             console.log('user signed in:',  userCredential.user.email?.slice(0,userCredential.user.email?.indexOf('@')))
+            dispatch(updateUser({login:userCredential.user.email?.slice(0, userCredential.user.email?.indexOf('@')) as string, password: 'e'}))
         } catch (e) {
             setError('неверный логин или пароль')
             console.log('error signing in', e.message)
@@ -66,10 +67,13 @@ export const AuthPopup: React.FC = () => {
         }
 
     }
+    const a = localStorage.getItem('login')
     useEffect(() => {
-        const a = localStorage.getItem('login')
-        console.log(a)
-    }, []);
+        if (a){
+            dispatch(updateUser({login: a as string, password: 'm&!ZRAbJMLd2?ue'}))
+        }
+
+    }, [a]);
 
     return createPortal(
         <div className={'AuthPopup'}>
@@ -87,5 +91,6 @@ export const AuthPopup: React.FC = () => {
             </form>
         </div>,document.body);
 };
+
 //m&!ZRAbJMLd2?ue
 //1zE<i\<k@UE92bJ
