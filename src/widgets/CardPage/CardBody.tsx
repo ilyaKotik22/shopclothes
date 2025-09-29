@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {use, useEffect, useState} from "react";
 import './CardBody.css'
 import img1 from '../../../public/cardPage1.png'
 import img2 from '../../../public/cardPage2.png'
@@ -9,7 +9,7 @@ import img6 from '../../../public/cardPage6.png'
 
 import {MyButton} from "../../shared/ui";
 import { useLocation } from "react-router-dom";
-import {doc,getDoc  } from 'firebase/firestore';
+import {doc,getDoc, serverTimestamp, updateDoc  } from 'firebase/firestore';
 import { db } from "../../../server/server";
 import type { clothingProductsType } from "../CatalogPage/itemsArea/ItemsArea";
 
@@ -39,6 +39,19 @@ async function fetchProductById() {
     return null;
   }
 }
+    const addToBasketItems = async (itemId, newItem,path) => {
+  try {
+    const basketRef = doc(db, "baskets", `${path}_basket`);
+    
+    await updateDoc(basketRef, {
+      [`items.${itemId}`]: newItem,
+    });
+    
+    console.log("Item added to basket");
+  } catch (error) {
+    console.error("Error adding item: ", error);
+  }
+};
     useEffect(()=>{
         fetchProductById()
     },[])
@@ -60,6 +73,7 @@ async function fetchProductById() {
                 name: dataItem?.name,
                 color: color,
                 price: dataItem?.price,
+                count: 1
             }
             
         }
@@ -74,7 +88,7 @@ async function fetchProductById() {
             setError('Заполните все поля')
             
         } else{
-            console.log(obj)
+            addToBasketItems(dataItem?.id,obj.item,user)
         }
         
     }
