@@ -4,11 +4,12 @@ import './AuthPopup.css'
 import {MyButton} from "../../../shared/ui";
 import cross from  '../../../../public/crossIcon.png'
 import {createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut} from "firebase/auth";
-import {auth} from "../../../../server/server.ts";
+import {auth, db} from "../../../../server/server.ts";
 import {useDispatch} from "react-redux";
 import {ChangeStatus} from "./store/authPopup.ts";
 
 import {updateUser} from "../store/appSlice.ts";
+import { addDoc, collection, doc, serverTimestamp, setDoc } from "firebase/firestore";
 
 export const AuthPopup: React.FC = () => {
 
@@ -18,12 +19,33 @@ export const AuthPopup: React.FC = () => {
     const [isAutharisation, setIsAutharisation] = useState(false)
     const dispatch = useDispatch()
 
+
+    const CreateBasket = async (basketData, basketId) => {
+  try {
+    await setDoc(doc(db, "baskets", basketId), {
+      ...basketData
+    });
+    
+    console.log("Document written with ID: ", basketId);
+    return basketId;
+  } catch (error) {
+    console.error("Error adding document: ", error);
+    throw error;
+  }
+};
+
     const signUpWithEmail = async (email,password) =>{
         const correctEmail = email.replace(/\s/g, '')
 
         try {
             const userCredential = await createUserWithEmailAndPassword(auth,correctEmail,password)
             console.log('user rigistered:', userCredential.user)
+            CreateBasket({
+                user: userCredential.user.email,
+                items: {
+                    wadsda: 0
+                }
+            }, `${userCredential.user.email}_basket`)
         }catch (error){
             setError('такой пользователь уже существует')
             console.log('error signing up:', error.message)
@@ -34,7 +56,7 @@ export const AuthPopup: React.FC = () => {
 
         try {
             const userCredential = await signInWithEmailAndPassword(auth,correctEmail,password)
-            localStorage.setItem('login',userCredential.user.email?.slice(0, userCredential.user.email?.indexOf('@')) as string)
+            localStorage.setItem('login',userCredential.user.email as string)
             console.log('user signed in:',  userCredential.user.email?.slice(0,userCredential.user.email?.indexOf('@')))
             dispatch(updateUser({login:userCredential.user.email?.slice(0, userCredential.user.email?.indexOf('@')) as string, password: 'e'}))
         } catch (e) {
@@ -42,14 +64,14 @@ export const AuthPopup: React.FC = () => {
             console.log('error signing in', e.message)
         }
     }
-    const  logOut = async () => {
-        try {
-            await signOut(auth)
-            console.log('user signed out')
-        }catch (e) {
-            console.log('error signing out', e.message)
-        }
-    }
+    // const  logOut = async () => {
+    //     try {
+    //         await signOut(auth)
+    //         console.log('user signed out')
+    //     }catch (e) {
+    //         console.log('error signing out', e.message)
+    //     }
+    // }
     const handleOnSubmit = (e)=>{
         e.preventDefault()
         setError('')
@@ -94,3 +116,4 @@ export const AuthPopup: React.FC = () => {
 
 //m&!ZRAbJMLd2?ue
 //1zE<i\<k@UE92bJ
+//sjfgnherghrdfbwds
