@@ -4,7 +4,7 @@ import {ItemBody} from "../itemBody/ItemBody.tsx";
 import './ItemsArea.css'
 import {useSelector} from "react-redux";
 import type {RootState} from "../../../app/store/store.ts";
-type clothingProductsType = {
+export type clothingProductsType = {
     id: string,
     name: string,
     price: number,

@@ -1,6 +1,7 @@
 import React from "react";
 import './ItemBody.css'
 import img1 from '../../../../public/item11.png'
+import { useLocation } from "react-router-dom";
 
 type Item ={
     id: string
@@ -11,7 +12,7 @@ type Item ={
 }
 export const ItemBody: React.FC<Item> = ({id,name,price,sizeArr,colorsArr}) => {
     return (
-        <a href={`/Card/:${id}`}>
+        <a href={`/Card/${id}`}>
             <div className={'ItemBody'}>
                 <img src={img1} alt=""/>
                 <div className="ItemBody__name">{name}</div>
