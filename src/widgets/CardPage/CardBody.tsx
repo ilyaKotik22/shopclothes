@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import './CardBody.css'
 import img1 from '../../../public/cardPage1.png'
 import img2 from '../../../public/cardPage2.png'
@@ -8,19 +8,79 @@ import img5 from '../../../public/cardPage5.png'
 import img6 from '../../../public/cardPage6.png'
 
 import {MyButton} from "../../shared/ui";
+import { useLocation } from "react-router-dom";
+import {doc,getDoc  } from 'firebase/firestore';
+import { db } from "../../../server/server";
+import type { clothingProductsType } from "../CatalogPage/itemsArea/ItemsArea";
 
 export const CardBody: React.FC= () => {
-    const masSizes = ['XXS','XS','S','M']
-    const [detailsSection,setDetailsSection] = useState(false)
+    const user = localStorage.getItem('login')
     const [compound, setCompound] = useState(false)
-    const [size,setSize] = useState('')
+    const [size,setSize] = useState()
+    const [color,setColor] = useState<string>()
     const [sizeSection,setSizeSection] = useState(false)
+    const [dataItem, setDataItem] = useState<clothingProductsType>()
+    const [error,setError] = useState('')
+    const location = useLocation()
+
+async function fetchProductById() {
+
+  const productRef = doc(db, "products", location.pathname.split('/')[location.pathname.split('/').length-1]);
+
+  const snapshot = await getDoc(productRef);
+
+  if (snapshot.exists()) {
+    const product = { id: snapshot.id, ...snapshot.data() };
+    setDataItem(product as clothingProductsType)
+   
+    return product;
+  } else {
+    console.log("Такого товара нет");
+    return null;
+  }
+}
+    useEffect(()=>{
+        fetchProductById()
+    },[])
+
+
     const sizeHandler = (e) =>{
         setSizeSection(e=> !e)
         setSize(e.target.innerText)
     }
+    const addInBasket = ()=>{
+        
+        setError('')
+        
+        const obj = {
+            user: user,
+            item: {
+                id: dataItem?.id,
+                size: size,
+                name: dataItem?.name,
+                color: color,
+                price: dataItem?.price,
+            }
+            
+        }
+        let hasError = false
+        Object.keys(obj.item).forEach((el:string)=>{
+            if(obj.item[el] === undefined){
+                hasError = true
+            } 
+        })
+        
+        if(hasError){
+            setError('Заполните все поля')
+            
+        } else{
+            console.log(obj)
+        }
+        
+    }
     const mas = [img1,img2,img3,img4,img5]
-    return (
+    
+    return dataItem ? (
         <div className={'container'}>
             <div className={'CardBody'}>
                 <div className="CardBody__section">
@@ -36,12 +96,11 @@ export const CardBody: React.FC= () => {
                     </div>
                 </div>
                 <div className="CardBody__section mod__section">
-                    <div className="CardBody__header">Кремовое пальто</div>
-                    <div className="CardBody__price">3333p</div>
+                    <div className="CardBody__header">{dataItem?.name}</div>
+                    <div className="CardBody__price">{dataItem?.price}p</div>
                     <ul className={'CardBody__colors'}>
-                        <li></li>
-                        <li></li>
-                        <li></li>
+                        {dataItem?.colors.map(el=> <li onClick={()=> setColor(el as string)}></li>)}
+                        
                     </ul>
                     <div className={'CardBody__color-name'}>Цвет: Кофе с молоком меланж</div>
                     <div onClick={() => setSizeSection(el=>!el)} className="CardBody__size">
@@ -52,15 +111,17 @@ export const CardBody: React.FC= () => {
 
                     </div>
                     <ul onClick={sizeHandler}  style={{display: (sizeSection ? 'flex' : 'none')}} className={'CardBody__dropdown'}>
-                        {masSizes.map((el)=> {
+                        {dataItem?.sizes.map((el)=> {
                             return (
                                 <li className={(size === el ? 'changedSize': '')}>{el}</li>
                             )
                         })}
                     </ul>
+                    <div className="">{error}</div>
                     <div className="CardBody__section modeButton">
-                        <MyButton text={'В КОРЗИНУ'}/>
-                        <MyButton text={'В ИЗБРАННОЕ'}/>
+
+                        <MyButton onClick={()=>addInBasket()} typeButton="button" text={'В КОРЗИНУ'}/>
+                        <MyButton typeButton="button" text={'В ИЗБРАННОЕ'}/>
                     </div>
                     <div className="CardBody__description">
                         <div className="CardBody__header">Подробности</div>
@@ -71,15 +132,8 @@ export const CardBody: React.FC= () => {
 
                             <div className="justLine"></div>
                             <div style={{display: (compound ? 'block' : 'none')}} className="CardBody__dropdown-desc">
-                                <div className="">Состав: 50% Шерсть, 50% Полиэстер</div>
-                                <div className="">Подкладка: 100% Полиэстер</div>
-                                <div className="">Утеплитель: 90% Пух, 10% Перо</div>
-                                <br/>
-                                <div className="">- Не стирать</div>
-                                <div className="">- Гладить при температуре утюга до 110°C</div>
-                                <div className="">- Не отбеливать</div>
-                                <div className="">- Сухая чистка (химчистка)</div>
-                                <div className="">- Барабанная сушка запрещена</div>
+                                {dataItem?.care.map(el=> <div>{el}</div>)}
+                               
                             </div>
                         </div>
                     </div>
@@ -87,5 +141,5 @@ export const CardBody: React.FC= () => {
             </div>
         </div>
 
-    );
+    ) : (<div>загрузка товара...</div>);
 };
